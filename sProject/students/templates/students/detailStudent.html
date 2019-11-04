@@ -1,0 +1,28 @@
+<!DECTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html"; charset=UTF-8>
+         <title>Title</title>
+    </head>
+    
+    <body>
+        <p>Read Student</p>
+        
+        {% if student_info %}
+            이름 : {{student_info.s_name}}<br>
+            전공 : {{student_info.s_major}}<br>
+            나이 : {{student_info.s_age}}<br>
+            학년 : {{student_info.s_grade}}<br>
+            성별 : {{student_info.s_gender}}<br>
+        {% else %}
+            <p>Student : 0</p>
+        {% endif %}
+        
+        <br>
+        <a href = "{% url 'students:stuModify' student_info.s_name %}">수정</a>
+        <a href = "{% url 'students:stuDel' student_info.s_name %}">삭제</a>
+        <a href = "{% url 'students:stuAll' %}">학생리스트</a>
+        <a href = "{% url 'students:reg' %}">신규학생등록</a>
+        
+    </body>
+</html>
