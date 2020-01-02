@@ -11,4 +11,11 @@ urlpatterns = [
     path('<str:name>/modify/', views.modifyStudentOne, name = 'stuModify'),
     path('modifyCon/', views.modifyConStudent, name = 'modifyCon'),
     path('<str:name>/delete/', views.delConStudent, name = 'stuDel'),
+    path('login/', views.login, name = 'login'),
+    path('user/', views.user, name = 'user'),
+    path('userAll/', views.userAll, name = 'userAll'),
+    path('<str:name>/userDelete/', views.userDel, name = 'userDel'),
+    path('main/', views.main, name='name'),
+    
+
 ]

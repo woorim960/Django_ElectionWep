@@ -10,3 +10,9 @@ class Student(models.Model):
     def __str__(self):
         return self.s_name
     
+class User(models.Model):
+    s_userId = models.CharField(max_length = 50)
+    s_userPw = models.CharField(max_length = 20)
+    
+    def __str__(self):
+        return self.s_userId

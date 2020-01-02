@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from students.models import Student
+from students.models import Student, User
 
 def regStudent(request):
     return render(request, 'students/registerStudent.html')
@@ -57,8 +57,31 @@ def delConStudent(request, name):
     
     return HttpResponseRedirect(reverse('students:stuAll'))
 
+def login(request):
+    return render(request, 'test/login.html')
 
+def user(request):
+    userId = request.POST['userId']
+    userPw = request.POST['userPw']
+    
+    queryStr = User(s_userId = userId, s_userPw = userPw)
+    queryStr.save()
+    
+    return HttpResponseRedirect(reverse('students:userAll'))
 
+def userAll(request):
+    queryStr = User.objects.all()
+    context = {'user_list' : queryStr}
+    return render(request, 'test/readUserAll.html', context)
+
+def userDel(request, userId):
+    queryStr = User.objects.get(s_userId = userId)
+    queryStr.delete()
+    
+    return HttpResponseRedirect(reverse('students:userAll'))
+
+def main(request):
+    return render(request, 'test/htmlTemplates/index.html')
 
 
 
