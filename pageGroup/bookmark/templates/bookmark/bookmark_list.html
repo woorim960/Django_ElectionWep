@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = 'row'>
+    <div class = 'col'></div>
+    <div class = 'col-12 col-xl-8 col-md-4'>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">번호</th>
+              <th scope="col">사이트명</th>
+              <th scope="col">URL</th>
+              <th scope="col">수정</th>
+              <th scope="col">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for object in object_list %}
+            <tr>
+              <th scope="row">{{ object.id }}</th>
+              <td><a href="{% url 'bookmark:detail' object.id %}">{{ object.site_name}}</a></td>
+                <td><a href="{{ object.url }}">{{ object.url }}</a></td>
+              <td><a href="{% url 'bookmark:update' object.id %}">수정</a></td>
+              <td><a href="{% url 'bookmark:delete' object.id %}">삭제</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        
+        <a href="{% url 'bookmark:create' %}" class="btn btn-primary">북마크 생성하기</a>
+    </div>
+    <div class = 'col'></div>
+</div>
+{% endblock %}
